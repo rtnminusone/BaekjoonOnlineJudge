@@ -1,7 +1,6 @@
 ﻿#pragma warning disable CS8600, CS8602, CS8604
 
 using System.Collections;
-using System;
 
 ArrayList A = new ArrayList();
 ArrayList B = new ArrayList();
