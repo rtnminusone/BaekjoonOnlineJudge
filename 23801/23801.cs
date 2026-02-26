@@ -3,11 +3,11 @@
 class Program
 {
 	public static int N, M;
-	public static int[] dist1, distn;
+	public static long[] dist1, distn;
 	public static List<(int, int)>[] L;
-	public static PriorityQueue<(int, int), int> PQ = new PriorityQueue<(int, int), int>();
+	public static PriorityQueue<(int, long), long> PQ = new PriorityQueue<(int, long), long>();
 
-	public static void Dijkstra(int[] dist)
+	public static void Dijkstra(long[] dist)
 	{
 		while (PQ.Count > 0)
 		{
@@ -32,10 +32,10 @@ class Program
 		string[] S = Console.ReadLine().Split();
 		N = int.Parse(S[0]);
 		M = int.Parse(S[1]);
-		dist1 = new int[N];
-		distn = new int[N];
-		Array.Fill(dist1, int.MaxValue);
-		Array.Fill(distn, int.MaxValue);
+		dist1 = new long[N];
+		distn = new long[N];
+		Array.Fill(dist1, long.MaxValue);
+		Array.Fill(distn, long.MaxValue);
 		L = new List<(int, int)>[N];
 		for (int i = 0; i < M; i++)
 		{
@@ -60,19 +60,19 @@ class Program
 
 		Dijkstra(distn);
 
-		int r = int.MaxValue;
+		long r = long.MaxValue;
 		int K = int.Parse(Console.ReadLine());
 		S = Console.ReadLine().Split();
 		for (int i = 0; i < K; i++)
 		{
 			int tmp = int.Parse(S[i]) - 1;
-			if (dist1[tmp] == int.MaxValue || distn[tmp] == int.MaxValue) continue;
+			if (dist1[tmp] == long.MaxValue || distn[tmp] == long.MaxValue) continue;
 			if (r > dist1[tmp] + distn[tmp])
 			{
 				r = dist1[tmp] + distn[tmp];
 			}
 		}
 
-		Console.WriteLine(r);
+		Console.WriteLine(r == long.MaxValue ? -1 : r);
 	}
 }
